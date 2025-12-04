@@ -14,10 +14,11 @@ from pydantic import BaseModel
 app = FastAPI(title="IQ Test Lite API", version="1.0.0")
 
 # Enable CORS for frontend
+# In production, replace ["*"] with specific allowed origins
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
+    allow_credentials=False,  # Set to False when using wildcard origins
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -119,15 +120,19 @@ async def submit_test(submission: TestSubmission):
         # Load scoring norms
         norms = load_scoring_norms()
         
+        # Create lookup dictionary for O(1) access
+        norms_dict = {norm["raw_score"]: norm for norm in norms}
+        
         # Find corresponding IQ score
-        # Default to lowest if score is too low, highest if too high
-        score_data = norms[0]  # Default
-        for norm in norms:
-            if raw_score == norm["raw_score"]:
-                score_data = norm
-                break
-            elif raw_score > norm["raw_score"]:
-                score_data = norm  # Keep updating to get closest
+        if raw_score in norms_dict:
+            score_data = norms_dict[raw_score]
+        else:
+            # If exact score not found, use closest available score
+            # Default to lowest if score is too low, highest if too high
+            score_data = norms[0]
+            for norm in norms:
+                if raw_score >= norm["raw_score"]:
+                    score_data = norm
         
         return ScoreResponse(
             raw_score=raw_score,

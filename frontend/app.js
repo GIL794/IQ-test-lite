@@ -233,8 +233,10 @@ window.addEventListener('DOMContentLoaded', async () => {
         const response = await fetch(`${API_BASE_URL}/api/health`);
         if (!response.ok) {
             console.warn('API health check failed');
+            // Note: In a production app, you might want to show a warning banner
         }
     } catch (error) {
         console.warn('Could not connect to API:', error);
+        // Note: The startTest function will handle and display errors when user attempts to start
     }
 });
