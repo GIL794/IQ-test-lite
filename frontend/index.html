@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IQ Test Lite - Educational Reasoning Assessment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Welcome Screen -->
+        <div id="welcomeScreen" class="screen active">
+            <div class="header">
+                <h1>IQ Test Lite</h1>
+                <p class="subtitle">Educational Reasoning Assessment</p>
+            </div>
+            
+            <div class="disclaimer-box">
+                <h2>⚠️ Important Disclaimer</h2>
+                <p><strong>This is NOT a clinical or official IQ test.</strong></p>
+                <ul>
+                    <li>Results are approximate and for educational/entertainment purposes only</li>
+                    <li>This test uses a small set of fluid reasoning questions</li>
+                    <li>A proper IQ assessment should be administered by a qualified professional</li>
+                    <li>Many factors affect cognitive performance (stress, fatigue, environment, etc.)</li>
+                    <li>IQ is just one measure and doesn't define a person's worth or potential</li>
+                </ul>
+            </div>
+            
+            <div class="info-box">
+                <h3>About This Test</h3>
+                <p>This assessment contains <strong>12 fluid reasoning questions</strong> covering:</p>
+                <ul>
+                    <li>Number sequences and patterns</li>
+                    <li>Letter sequences</li>
+                    <li>Logical reasoning</li>
+                    <li>Analogies and classification</li>
+                </ul>
+                <p>Take your time and think through each question carefully.</p>
+            </div>
+            
+            <button id="startBtn" class="btn btn-primary">Start Test</button>
+        </div>
+        
+        <!-- Test Screen -->
+        <div id="testScreen" class="screen">
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+                <span id="progressText" class="progress-text">Question 1 of 12</span>
+            </div>
+            
+            <div class="question-container">
+                <h2 id="questionText" class="question-text"></h2>
+                <div id="optionsContainer" class="options-container"></div>
+            </div>
+            
+            <div class="navigation">
+                <button id="prevBtn" class="btn btn-secondary" disabled>Previous</button>
+                <button id="nextBtn" class="btn btn-primary">Next</button>
+                <button id="submitBtn" class="btn btn-success" style="display: none;">Submit Test</button>
+            </div>
+        </div>
+        
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="screen">
+            <div class="header">
+                <h1>Your Results</h1>
+            </div>
+            
+            <div class="results-container">
+                <div class="score-circle">
+                    <div class="score-value" id="iqScore">-</div>
+                    <div class="score-label">Estimated IQ</div>
+                </div>
+                
+                <div class="results-details">
+                    <div class="result-item">
+                        <span class="result-label">Correct Answers:</span>
+                        <span class="result-value" id="rawScore">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Percentile:</span>
+                        <span class="result-value" id="percentile">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Category:</span>
+                        <span class="result-value" id="description">-</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="disclaimer-box">
+                <h3>⚠️ Remember</h3>
+                <p id="resultsDisclaimer" class="disclaimer-text"></p>
+            </div>
+            
+            <button id="retakeBtn" class="btn btn-primary">Take Test Again</button>
+        </div>
+        
+        <!-- Loading Spinner -->
+        <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>IQ Test Lite - For Educational Purposes Only</p>
+    </footer>
+    
+    <script src="app.js"></script>
+</body>
+</html>
