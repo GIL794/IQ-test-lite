@@ -1,0 +1,14 @@
+raw_score,iq_score,percentile,description
+0,70,2,Well Below Average
+1,75,5,Well Below Average
+2,80,9,Below Average
+3,85,16,Below Average
+4,90,25,Average
+5,95,37,Average
+6,100,50,Average
+7,105,63,Average
+8,110,75,Above Average
+9,115,84,Above Average
+10,120,91,Superior
+11,125,95,Superior
+12,130,98,Very Superior
